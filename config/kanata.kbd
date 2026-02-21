@@ -1,0 +1,17 @@
+(defsrc
+  caps lmet rmet
+)
+
+(defalias
+  ;; Tap keys to switch layers/emit keys, hold for original modifier
+  ;; 150ms tap time for quick switching
+  ;; lmet -> eisu (Mac Japanese input switch - alphanumeric)
+  ;; rmet -> kana (Mac Japanese input switch - kana)
+  
+  ;;lcmd (tap-hold-press 150 150 eisu lmet)
+  ;;rcmd (tap-hold-press 150 150 kana rmet)
+)
+
+(deflayer base
+  lctl @lcmd @rcmd
+)

@@ -1,0 +1,63 @@
+# ~/.config/starship.toml
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+
+[directory]
+style = "bold cyan"
+read_only = " 󰌾"
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+
+[git_status]
+style = "bold red"
+conflicted = "7"
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+untracked = ""
+stashed = "󰏖"
+modified = ""
+staged = '[++\($count\)](green)'
+renamed = "»"
+deleted = "✘"
+
+[c]
+symbol = " "
+style = "bold blue"
+
+[rust]
+symbol = " "
+style = "bold red"
+
+[golang]
+symbol = " "
+style = "bold cyan"
+
+[nodejs]
+symbol = " "
+style = "bold green"
+
+[python]
+symbol = " "
+style = "bold yellow"
+
+[nix_shell]
+symbol = " "
+style = "bold blue"
+
+[time]
+disabled = false
+style = "bold white"
+format = "[$time]($style) "
+time_format = "%T"
+
+[line_break]
+disabled = false
