@@ -62,7 +62,7 @@
         type = "app";
         program = toString (
           nixpkgs.legacyPackages."aarch64-darwin".writeShellScript "update-script" (
-            builtins.readFile ./config/update.sh
+            builtins.readFile ./scripts/update.sh
           )
         );
       };
