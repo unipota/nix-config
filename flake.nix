@@ -39,8 +39,11 @@
         in
         nixpkgs.lib.genAttrs hostDirs (
           host:
-          darwin.lib.darwinSystem {
+          let
             system = "aarch64-darwin";
+          in
+          darwin.lib.darwinSystem {
+            inherit system;
 
             # Pass inputs to modules
             specialArgs = { inherit inputs catppuccin; };
@@ -55,10 +58,10 @@
           }
         );
 
-      apps.${"aarch64-darwin"}.update = {
+      apps."aarch64-darwin".update = {
         type = "app";
         program = toString (
-          nixpkgs.legacyPackages.${"aarch64-darwin"}.writeShellScript "update-script" (
+          nixpkgs.legacyPackages."aarch64-darwin".writeShellScript "update-script" (
             builtins.readFile ./config/update.sh
           )
         );

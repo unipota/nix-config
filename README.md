@@ -1,6 +1,6 @@
 # ❄️ Nix-Config & Home Manager Configuration
 
-このリポジトリは `nix-darwin` および `home-manager` を使用した macOS のシステム設定とユーザー環境を管理するための Dotfiles （構成リポジトリ）です。
+このリポジトリは `nix-darwin` および `home-manager` を使用した macOS のシステム設定とユーザー環境を管理するための Dotfiles です。
 
 ## 📂 ディレクトリ構成
 
