@@ -28,7 +28,7 @@
       ...
     }@inputs:
     {
-      darwinConfigurations."unipotanoMacBook-Air" = darwin.lib.darwinSystem {
+      darwinConfigurations."macbook_air" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
 
         # Pass inputs to modules
@@ -36,7 +36,7 @@
 
         modules = [
           # Import the host-specific configuration
-          ./hosts/unipotanoMacBook-Air
+          ./hosts/macbook_air
 
           # Integrate home-manager
           home-manager.darwinModules.home-manager

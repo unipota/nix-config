@@ -82,6 +82,15 @@
       InitialKeyRepeat = 15;
       "com.apple.mouse.tapBehavior" = 1;
     };
+    CustomUserPreferences = {
+      "com.apple.desktopservices" = {
+        DSDontWriteNetworkStores = true;
+        DSDontWriteUSBStores = true;
+      };
+      "com.apple.CrashReporter" = {
+        DialogType = "none";
+      };
+    };
   };
 
   system.keyboard = {

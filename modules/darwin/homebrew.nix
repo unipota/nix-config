@@ -32,7 +32,6 @@
       "google-chrome"
       "docker"
       "tailscale"
-      "antigravity"
     ];
     masApps = {
       "Klack" = 6446206067;
