@@ -20,6 +20,8 @@
       appswitcher-all-displays = true;
       # Auto hide
       autohide = true;
+      autohide-delay = 0.0;
+      autohide-time-modifier = 0.2;
       # Group apps in Mission Control
       expose-group-apps = true;
       # Hover magnification
@@ -54,6 +56,10 @@
       FXEnableExtensionChangeWarning = false;
       # Default list view
       FXPreferredViewStyle = "Nlsv";
+      # Default search scope to current folder
+      FXDefaultSearchScope = "SCcf";
+      # Keep folders on top when sorting by name
+      _FXSortFoldersFirst = true;
       # No removable media on desktop
       ShowRemovableMediaOnDesktop = false;
       # Show status bar
@@ -62,6 +68,15 @@
       ShowPathbar = true;
       # Show full path in title
       _FXShowPosixPathInTitle = true;
+    };
+    screencapture = {
+      location = "~/Downloads";
+      disable-shadow = true;
+    };
+    trackpad = {
+      Clicking = true;
+      TrackpadRightClick = true; # two-finger tap for right click
+      TrackpadThreeFingerDrag = true; # Enable three finger drag
     };
     magicmouse = {
       MouseButtonMode = "TwoButton";
@@ -78,9 +93,20 @@
     };
     NSGlobalDomain = {
       AppleShowAllExtensions = true;
-      KeyRepeat = 2;
-      InitialKeyRepeat = 15;
+      AppleShowAllFiles = true;
+      KeyRepeat = 1;
+      InitialKeyRepeat = 10;
       "com.apple.mouse.tapBehavior" = 1;
+      "com.apple.trackpad.scaling" = 1.5;
+
+      # Disable auto-correction/typing substitutions
+      NSAutomaticCapitalizationEnabled = false;
+      NSAutomaticDashSubstitutionEnabled = false;
+      NSAutomaticPeriodSubstitutionEnabled = false;
+      NSAutomaticQuoteSubstitutionEnabled = false;
+      NSAutomaticSpellingCorrectionEnabled = false;
+
+      _HIHideMenuBar = true;
     };
     CustomUserPreferences = {
       "com.apple.desktopservices" = {
