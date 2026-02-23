@@ -1,0 +1,25 @@
+copy_clipboard "system"
+copy_command "pbcopy"
+copy_on_select true
+default_layout "default"
+default_mode "normal"
+mouse_mode true
+mirror_session false
+on_force_close "detach"
+pane_frames false
+scroll_buffer_size 10000
+scrollback_editor "$EDITOR"
+show_startup_tips false
+simplified_ui true
+styled_underlines true
+theme "nord"
+
+keybinds {
+    shared_except "locked" {
+        bind "Ctrl y" {
+            LaunchOrFocusPlugin "https://github.com/karimould/zellij-forgot/releases/latest/download/zellij_forgot.wasm" {
+                floating true
+            }
+        }
+    }
+}

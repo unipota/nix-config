@@ -15,7 +15,6 @@
 
     # Catppuccin theme
     catppuccin.url = "github:catppuccin/nix";
-
   };
 
   outputs =
@@ -57,14 +56,5 @@
             ];
           }
         );
-
-      apps."aarch64-darwin".update = {
-        type = "app";
-        program = toString (
-          nixpkgs.legacyPackages."aarch64-darwin".writeShellScript "update-script" (
-            builtins.readFile ./scripts/update.sh
-          )
-        );
-      };
     };
 }

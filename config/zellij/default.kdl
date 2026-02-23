@@ -1,0 +1,46 @@
+layout {
+  default_tab_template {
+    children
+    pane size=1 borderless=true {
+        plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
+            format_left   "{mode} #[bg=#4C566A,fg=#ECEFF4,bold] {session} {tabs}"
+            format_right  "{command_git_branch} {datetime}"
+            format_space  ""
+
+            border_enabled  "false"
+            border_char     "─"
+            border_format   "#[fg=#6C7086]{char}"
+            border_position "top"
+
+            hide_frame_for_single_pane "true"
+
+            mode_normal  "#[bg=#A3BE8C,fg=#2E3440,bold] NORMAL "
+            mode_locked  "#[bg=#BF616A,fg=#2E3440,bold] LOCKED "
+            mode_resize  "#[bg=#EBCB8B,fg=#2E3440,bold] RESIZE "
+            mode_pane    "#[bg=#88C0D0,fg=#2E3440,bold] PANE "
+            mode_tab     "#[bg=#B48EAD,fg=#2E3440,bold] TAB "
+            mode_scroll  "#[bg=#81A1C1,fg=#2E3440,bold] SCROLL "
+            mode_enter_search "#[bg=#88C0D0,fg=#2E3440,bold] ENT-SEARCH "
+            mode_search  "#[bg=#88C0D0,fg=#2E3440,bold] SEARHC "
+            mode_rename_tab "#[bg=#B48EAD,fg=#2E3440,bold] RENAME-TAB "
+            mode_rename_pane "#[bg=#88C0D0,fg=#2E3440,bold] RENAME-PANE "
+            mode_session "#[bg=#EBCB8B,fg=#2E3440,bold] SESSION "
+            mode_move    "#[bg=#EBCB8B,fg=#2E3440,bold] MOVE "
+            mode_prompt  "#[bg=#88C0D0,fg=#2E3440,bold] PROMPT "
+            mode_tmux    "#[bg=#D08770,fg=#2E3440,bold] TMUX "
+
+            tab_normal   "#[fg=#D8DEE9] {name} "
+            tab_active   "#[bg=#4C566A,fg=#ECEFF4,bold] {name} "
+
+            command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
+            command_git_branch_format      "#[fg=#88C0D0] {stdout} "
+            command_git_branch_interval    "10"
+            command_git_branch_rendermode  "static"
+
+            datetime        "#[fg=#6C7086,bold] {format} "
+            datetime_format "%Y-%m-%d %H:%M"
+            datetime_timezone "Asia/Tokyo"
+        }
+    }
+  }
+}    

@@ -15,6 +15,7 @@
         ./programs/git.nix
         ./programs/ghostty.nix
         ./programs/cli.nix
+        ./programs/zellij.nix
       ];
 
       home.stateVersion = "23.11";
