@@ -5,6 +5,7 @@
     enable = true;
     package = pkgs.ghostty-bin;
     settings = {
+      theme = "nord";
       font-family = "Maple Mono NF";
       font-size = 14;
       mouse-hide-while-typing = true;
@@ -13,10 +14,5 @@
       scrollback-limit = 10000;
     };
     enableZshIntegration = true;
-  };
-
-  catppuccin.ghostty = {
-    enable = true;
-    flavor = "macchiato";
   };
 }

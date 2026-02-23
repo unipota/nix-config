@@ -23,7 +23,7 @@
     *   `Zsh` + `Oh-My-Zsh`
     *   `Starship` (プロンプト)
     *   各種インテグレーション (`Atuin`, `Carapace`, `Direnv`)
-    *   `Ghostty` (ターミナルエミュレータ - Catppuccin Macchiato テーマ適用済み)
+    *   `Ghostty` (ターミナルエミュレータ - Nord テーマ適用済み)
 
 ## 📂 構成ファイル
 

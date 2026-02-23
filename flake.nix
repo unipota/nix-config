@@ -13,8 +13,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Catppuccin theme
-    catppuccin.url = "github:catppuccin/nix";
+    # NixOS hardware configuration
   };
 
   outputs =
@@ -23,7 +22,6 @@
       nixpkgs,
       darwin,
       home-manager,
-      catppuccin,
       ...
     }@inputs:
     {
@@ -45,7 +43,7 @@
             inherit system;
 
             # Pass inputs to modules
-            specialArgs = { inherit inputs catppuccin; };
+            specialArgs = { inherit inputs; };
 
             modules = [
               # Import the host-specific configuration

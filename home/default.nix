@@ -1,5 +1,5 @@
 # Home-manager configuration for the user
-{ pkgs, catppuccin, ... }:
+{ pkgs, ... }:
 
 {
   # Automatically back up existing dotfiles managed by home-manager
@@ -9,7 +9,6 @@
     { config, pkgs, ... }:
     {
       imports = [
-        catppuccin.homeModules.catppuccin
         ./packages.nix
         ./shell.nix
         ./programs/git.nix
