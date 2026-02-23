@@ -23,7 +23,7 @@ alias gp="git push"
 alias gl="git pull"
 
 # System Update
-alias darwin-update="nix run ~/.config/nix-darwin#update"
+alias darwin-update="nix run ~/Workspace/nix-darwin#update"
 
 # --- FZF ---
 export FZF_DEFAULT_OPTS='
