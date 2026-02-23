@@ -28,20 +28,32 @@
       ...
     }@inputs:
     {
-      darwinConfigurations."macbook_air" = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
+      darwinConfigurations =
+        let
+          # Read all entries in the hosts directory
+          entries = builtins.readDir ./hosts;
+          # Filter for directories that are not "default"
+          hostDirs = builtins.attrNames (
+            nixpkgs.lib.filterAttrs (name: type: type == "directory" && name != "default") entries
+          );
+        in
+        nixpkgs.lib.genAttrs hostDirs (
+          host:
+          darwin.lib.darwinSystem {
+            system = "aarch64-darwin";
 
-        # Pass inputs to modules
-        specialArgs = { inherit inputs catppuccin; };
+            # Pass inputs to modules
+            specialArgs = { inherit inputs catppuccin; };
 
-        modules = [
-          # Import the host-specific configuration
-          ./hosts/macbook_air
+            modules = [
+              # Import the host-specific configuration
+              ./hosts/${host}
 
-          # Integrate home-manager
-          home-manager.darwinModules.home-manager
-        ];
-      };
+              # Integrate home-manager
+              home-manager.darwinModules.home-manager
+            ];
+          }
+        );
 
       apps.${"aarch64-darwin"}.update = {
         type = "app";

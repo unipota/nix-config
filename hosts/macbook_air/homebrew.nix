@@ -1,37 +1,13 @@
-# Homebrew package configuration
+# Macbook-specific Homebrew packages
 { ... }:
 
 {
   homebrew = {
-    enable = true;
-    onActivation = {
-      autoUpdate = true;
-      cleanup = "uninstall";
-    };
     taps = [
       "theboredteam/boring-notch"
     ];
-    brews = [
-      "mas"
-      "tailscale"
-    ];
     casks = [
-      "zed"
-      "visual-studio-code"
-      "raycast"
-      "antigravity"
       "TheBoredTeam/boring-notch/boring-notch"
-      "ghostty"
-      "karabiner-elements"
-      # "spotify"
-      "notion"
-      "cleanshot"
-      "discord"
-      "sozercan/repo/kaset"
-      "steipete/tap/codexbar"
-      "google-chrome"
-      "docker"
-      "tailscale"
     ];
     masApps = {
       "Klack" = 6446206067;

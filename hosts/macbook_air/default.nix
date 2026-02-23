@@ -2,10 +2,7 @@
 
 {
   imports = [
-    ./system.nix
+    ../default
     ./homebrew.nix
-    ./packages.nix
-    ./services.nix
-    ../../home
   ];
 }

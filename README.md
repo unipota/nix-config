@@ -36,14 +36,24 @@
 
 ### 💻 新しい macOS デバイスを追加する場合
 
-既存の設定をベースに、新しい Mac 用の設定を追加する手順は以下の通りです：
+`flake.nix` は `hosts` ディレクトリを動的に読み込み、設定を自動生成します。新しい Mac を追加する手順は以下の通りです：
 
-1. `hosts` ディレクトリ内に新しいホスト名でディレクトリを作成し、ベースにする設定をコピーします。
+1. `hosts` ディレクトリ内に新しいホスト名でディレクトリを作成し、`default` テンプレートを継承する `default.nix` を作成します。
    ```bash
-   cp -r hosts/macbook_air hosts/new_mac
+   mkdir -p hosts/new_mac
+   cat << 'EOF' > hosts/new_mac/default.nix
+   { ... }:
+
+   {
+     imports = [
+       ../default
+     ];
+   }
+   EOF
    ```
-2. `flake.nix` を編集し、`darwinConfigurations` に新しいデバイス名（例:`new_mac`）を追加します。
-3. デバイスのホスト名を新しいデバイス名に合わせるか、実行時に指定します。`config/update.sh` は現在のマシンのホスト名と一致する設定を自動的に適用します。
+2. 作成した `hosts/new_mac` ディレクトリを Git の管理下（`git add`）に置きます。（Git に追加されていないファイル・ディレクトリは Nix から参照されません）
+3. デバイス固有の設定が必要な場合は、`hosts/new_mac/default.nix` またはそのディレクトリ内に設定を追加してください。
+4. `config/update.sh` を実行すると、現在のマシンのホスト名と一致する設定が自動的に適用されます。
 
 ### 🔄 変更の適用（普段の運用）
 
