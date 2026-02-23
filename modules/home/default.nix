@@ -12,7 +12,7 @@
         catppuccin.homeModules.catppuccin
       ];
       home.sessionVariables = {
-        NH_FLAKE = "${config.home.homeDirectory}/.config/nix-darwin";
+        NH_FLAKE = "${config.home.homeDirectory}/Workspace/nix-darwin";
       };
 
       home.sessionPath = [
@@ -26,6 +26,7 @@
         ripgrep
         fd
         jq
+        btop
         gemini-cli
         fastfetch
         zsh-completions
