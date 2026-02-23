@@ -18,5 +18,8 @@
       ];
 
       home.stateVersion = "23.11";
+
+      # Enable unfree packages for this user
+      nixpkgs.config.allowUnfree = true;
     };
 }

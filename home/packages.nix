@@ -2,20 +2,32 @@
 
 {
   home.packages = with pkgs; [
-    # --- Modern environment essentials ---
-    neovim
-    jq
+    # --- System & Monitoring ---
     btop
-    gemini-cli
     fastfetch
 
-    # --- CLI Tools (New) ---
+    # --- CLI Utilities ---
+    jq
     yq
     xh
     dust
     procs
+    yazi
+    ripgrep
+    fd
+    tealdeer
+
+    # --- AI CLIs ---
+    gemini-cli
+    claude-code
+    codex
+
+    # --- Editors ---
+    neovim
 
     # --- Development Environments ---
+    devbox
+
     nodejs
     pnpm
     rustc

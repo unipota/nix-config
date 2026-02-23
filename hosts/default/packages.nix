@@ -10,4 +10,6 @@
     nix-output-monitor
     kanata-with-cmd
   ];
+
+  nixpkgs.config.allowUnfree = true;
 }
