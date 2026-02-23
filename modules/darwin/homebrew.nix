@@ -13,6 +13,7 @@
     ];
     brews = [
       "mas"
+      "tailscale"
     ];
     casks = [
       "zed"
@@ -22,7 +23,7 @@
       "TheBoredTeam/boring-notch/boring-notch"
       "ghostty"
       "karabiner-elements"
-      "spotify"
+      # "spotify"
       "notion"
       "cleanshot"
       "discord"
@@ -30,6 +31,8 @@
       "steipete/tap/codexbar"
       "google-chrome"
       "docker"
+      "tailscale"
+      "antigravity"
     ];
     masApps = {
       "Klack" = 6446206067;
