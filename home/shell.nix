@@ -2,7 +2,7 @@
 
 {
   home.sessionVariables = {
-    NH_FLAKE = "${config.home.homeDirectory}/Workspace/nix-darwin";
+    NH_FLAKE = "${config.home.homeDirectory}/Workspace/nix-config";
     CARAPACE_BRIDGES = "zsh,fish,bash,inshellisense";
   };
 
@@ -32,7 +32,7 @@
       gs = "git status";
       gp = "git push";
       gl = "git pull";
-      darwin-update = "nix run ~/Workspace/nix-darwin#update";
+      darwin-update = "nix run ~/Workspace/nix-config#update";
     };
 
     oh-my-zsh = {
@@ -54,7 +54,7 @@
   };
 
   programs.starship.enable = true;
-  home.file.".config/starship.toml".source = ../../config/starship.toml;
+  home.file.".config/starship.toml".source = ../config/starship.toml;
 
   programs.direnv = {
     enable = true;

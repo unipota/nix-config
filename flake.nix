@@ -1,5 +1,5 @@
 {
-  description = "unipota's Nix Darwin Configuration";
+  description = "unipota's Nix Config";
 
   inputs = {
     # Package repositories

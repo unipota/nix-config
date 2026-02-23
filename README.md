@@ -1,76 +1,55 @@
-# Nix-Darwin & Home Manager Configuration
+# ❄️ Nix-Config & Home Manager Configuration
 
-このリポジトリは `nix-darwin` および `home-manager` を使用した macOS のシステム設定とユーザー環境を管理しています。
+このリポジトリは `nix-darwin` および `home-manager` を使用した macOS のシステム設定とユーザー環境を管理するための Dotfiles （構成リポジトリ）です。
 
-## 使い方
+## 📂 ディレクトリ構成
 
-### 新規デバイスでのセットアップ（インストール手順）
+各ディレクトリの詳細な説明・導入しているツールについては、各ディレクトリ内の `README.md` を参照してください。
+
+*   **[`flake.nix`](./flake.nix)**: 設定のエントリーポイント。`nix-darwin` と `home-manager` の統合を定義しています。
+*   **[`config/`](./config/README.md)** ⚙️ : 各種設定ファイル（Starship, Kanata）やアップデート用ヘルパースクリプト。
+*   **[`home/`](./home/README.md)** 🏠 : ユーザー（`unipota`）固有の環境設定や、パッケージ（CLIツール、開発環境、ターミナル）の管理。
+*   **[`hosts/`](./hosts/README.md)** 🖥️ : システム全体（macOS）の構成。デフォルト設定、システムサービス（Kanataデーモンなど）、Homebrewの管理。
+
+---
+
+## 🚀 使い方
+
+### 初回セットアップ（新規インストール手順）
+
 新しい macOS デバイスで環境を構築する場合、以下の手順を実行します：
 
-1. Nix のインストール
+1. **Nix のインストール**
    ```bash
    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
    ```
-2. リポジトリのクローン
+2. **リポジトリのクローン**
    ```bash
    mkdir -p ~/Workspace
-   git clone https://github.com/unipota/nix-darwin.git ~/Workspace/nix-darwin
+   git clone https://github.com/unipota/nix-config.git ~/Workspace/nix-config
    ```
-3. 初期ビルドの実行（※ホスト名がFlakeの定義と一致していることを確認）
+3. **初期ビルドの実行**
    ```bash
-   cd ~/Workspace/nix-darwin
+   cd ~/Workspace/nix-config
    nix run nix-darwin -- switch --flake .
    ```
 
-### 変更の適用（普段の運用）
+### 💻 新しい macOS デバイスを追加する場合
+
+既存の設定をベースに、新しい Mac 用の設定を追加する手順は以下の通りです：
+
+1. `hosts` ディレクトリ内に新しいホスト名でディレクトリを作成し、ベースにする設定をコピーします。
+   ```bash
+   cp -r hosts/macbook_air hosts/new_mac
+   ```
+2. `flake.nix` を編集し、`darwinConfigurations` に新しいデバイス名（例:`new_mac`）を追加します。
+3. デバイスのホスト名を新しいデバイス名に合わせるか、実行時に指定します。`config/update.sh` は現在のマシンのホスト名と一致する設定を自動的に適用します。
+
+### 🔄 変更の適用（普段の運用）
+
 設定ファイル（`.nix`）を編集した後、システムに変更を適用するには専用のアップデートスクリプトを使用します：
 
 ```bash
-~/Workspace/nix-darwin/config/update.sh
+~/Workspace/nix-config/config/update.sh
 ```
-※ このスクリプトは `nix flake update` および `nh darwin switch` を自動で実行します。
-
-## ディレクトリ構成
-
-*   **`flake.nix`**: 設定のエントリーポイント。`nix-darwin` と `home-manager` の統合を定義しています。
-*   **`config/`**: 各種設定ファイルやヘルパースクリプト。
-    *   `update.sh`: 設定適用のためのラッパースクリプト。
-    *   `starship.toml`: Starship プロンプトの設定。
-    *   `zshrc.sh`: Zsh の初期化スクリプト。
-    *   `kanata.kbd`: Kanata のキーリマップ設定。
-*   **`modules/darwin/`**: システム全体（macOS）の設定モジュール。
-    *   `default.nix`: 他のシステムモジュールをインポート。
-    *   `packages.nix`: システム全体にインストールする基本パッケージ。
-    *   `homebrew.nix`: Homebrew (Casks, Formulas, Mac App Store) によるアプリ管理。
-    *   `services.nix`: Launchd デーモンなどのシステムサービス（Kanata など）。
-    *   `system.nix`: macOS のシステムデフォルト設定。
-*   **`modules/home/`**: ユーザー固有の環境設定モジュール。
-    *   `default.nix`: ユーザー（unipota）のパッケージ（Zsh, Neovim, 各種モダンCLIツール）、Dotfiles などの管理。
-
-## 主な導入ツール
-
-*   **モダン CLI ツール**: `fzf`, `ripgrep` (rg), `fd`, `jq`, `bat`, `eza`, `zoxide`, `btop`, `gh`, `fastfetch`
-*   **開発環境**: `nodejs`, `pnpm`, `rustc`, `cargo`, `go`
-*   **シェル**: Zsh + Oh-My-Zsh + Starship + 各種インテグレーション（Atuin, Carapace, Direnv）
-*   **ターミナル**: Ghostty (Catppuccin Macchiato テーマ)
-
-## キーボードリマッピング (Kanata)
-
-`kanata` を使用して高度なキーボードカスタマイズを行っています。
-設定リソースは `config/kanata.kbd` にあります。
-
-**現在のマッピング:**
-*   **Left/Right Command (タップ)**: IME 切り替え (左 -> 英数, 右 -> かな)。
-*   **Left/Right Command (長押し)**: 通常の Command キーとして動作。
-*   **CapsLock**: Control キーにマッピング。
-
-**サービス管理:**
-*   Kanata は Karabiner ドライバとやり取りするため、**System Daemon** (root 権限) として実行されます。
-*   定義場所: `modules/darwin/services.nix`
-*   **ログ**: `/var/log/kanata.err.log` および `/var/log/kanata.out.log`
-
-**トラブルシューティング:**
-もし Kanata が動作しなくなった場合は、以下を確認してください：
-1.  **権限**: システム設定で `kanata` (または実行しているシェル) に「入力監視」の権限があるか確認してください。
-2.  **ドライバ**: `Karabiner-Elements` がインストールされており、システム拡張機能が許可されているか確認してください。
-3.  **ログ**: `/var/log/kanata.err.log` で権限エラーが出ていないか確認してください。
+※ このスクリプトは `nix flake update` および `nh darwin switch .` を自動で実行します。

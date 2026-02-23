@@ -8,16 +8,14 @@
         name = "unipota";
         email = "unipota@outlook.jp";
       };
+      pull.rebase = true;
+      init.defaultBranch = "main";
     };
     ignores = [
       ".DS_Store"
       "*.swp"
       ".direnv/"
     ];
-    extraConfig = {
-      pull.rebase = true;
-      init.defaultBranch = "main";
-    };
   };
 
   programs.delta = {
