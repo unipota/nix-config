@@ -9,6 +9,15 @@
         email = "unipota@outlook.jp";
       };
     };
+    ignores = [
+      ".DS_Store"
+      "*.swp"
+      ".direnv/"
+    ];
+    extraConfig = {
+      pull.rebase = true;
+      init.defaultBranch = "main";
+    };
   };
 
   programs.delta = {
