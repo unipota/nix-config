@@ -1,10 +1,9 @@
-# ⚙️ Configuration Files (`config/`)
+# Configuration Files (`config/`)
 
 このディレクトリには、システムやユーザー環境の各種設定ファイルとユーティリティスクリプトが含まれています。
 
 ## 📝 ファイル一覧
 
-*   **`update.sh`**: Nix の Flake を更新し、`nh darwin switch .` を実行して設定を適用するラッパースクリプトです。
 *   **`starship.toml`**: `Starship` クロスシェルプロンプト用のカスタム設定。モダンで情報量の多いプロンプトを提供します。
 *   **`kanata.kbd`**: `Kanata` を使ったキーボードリマッピングの定義ファイルです。
     *   **左右 Command (タップ)**: IME 切り替え (英数 / かな)

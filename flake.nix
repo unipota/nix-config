@@ -24,7 +24,37 @@
       home-manager,
       ...
     }@inputs:
+    let
+      supportedSystems = [ "aarch64-darwin" ];
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+    in
     {
+      apps = forAllSystems (
+        system:
+        let
+          pkgs = import nixpkgs { inherit system; };
+          update = pkgs.writeShellApplication {
+            name = "darwin-update";
+            runtimeInputs = [
+              pkgs.git
+              pkgs.nix
+            ];
+            text = ''
+              exec ${self}/scripts/update.sh "$@"
+            '';
+          };
+        in
+        {
+          update = {
+            type = "app";
+            program = "${update}/bin/darwin-update";
+            meta.description = "Apply this nix-darwin configuration";
+          };
+          default = self.apps.${system}.update;
+        }
+      );
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
+
       darwinConfigurations =
         let
           # Read all entries in the hosts directory

@@ -32,7 +32,7 @@
       gs = "git status";
       gp = "git push";
       gl = "git pull";
-      darwin-update = "nix run ~/Workspace/nix-config#update";
+      darwin-update = "nix run ~/Workspace/nix-config";
     };
 
     oh-my-zsh = {

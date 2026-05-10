@@ -1,10 +1,10 @@
-# 🖥️ System & Host Configurations (`hosts/`)
+# System & Host Configurations (`hosts/`)
 
 このディレクトリは、`nix-darwin` を使用して macOS システム全体の設定を管理します。各デバイス（Mac）ごとの固有の設定はサブディレクトリ内に配置されます。
 
-## 🍏 ホスト設定と `default` テンプレート
+## ホスト設定と `default` テンプレート
 
-ホスト構成は `hosts/default` テンプレートに共通設定がまとめられており、各デバイス（例: `macbook_air`）はそれを継承して構築されます。
+ホスト構成は `hosts/default` テンプレートに共通設定がまとめられており、各デバイス（例: `macbookair`）はそれを継承して構築されます。
 
 *   **`default/`**: すべての Mac で共通して使用されるベース構成。
     *   **`packages.nix`**: システム全体（全ユーザー共通）で必要となる基本パッケージを定義します。
@@ -12,9 +12,11 @@
         *   例: Dock、Finder、キーボード、トラックパッドなどのシステム環境設定。
     *   **`homebrew.nix`**: GUI アプリケーション（Casks）、Homebrew のフォーミュラ、および Mac App Store アプリケーションのインストール管理を行います。
     *   **`services.nix`**: システムのバックグラウンドサービスや Launchd デーモンを管理します。
-*   **`デバイス名/`** (例: `macbook_air/`): 各デバイス固有の構成。基本的に `../default` をインポートし、差分（デバイス特有の設定）のみを定義します。
+*   **`デバイス名/`** (例: `macbookair/`): 各デバイス固有の構成。基本的に `../default` をインポートし、差分（デバイス特有の設定）のみを定義します。
 
-## ⌨️ サービス: Kanata (キーボードリマップ)
+新しい Mac は `scripts/install.sh` が `hosts/<LocalHostName>/default.nix` を生成します。手動で追加した場合は、適用前に `git add hosts/<デバイス名>/default.nix` を実行してください。
+
+## サービス: Kanata (キーボードリマップ)
 
 `services.nix` には、高度なキーボードカスタマイズツールである `Kanata` のデーモン化設定が含まれています。
 
