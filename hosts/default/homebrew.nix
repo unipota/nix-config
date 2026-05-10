@@ -18,7 +18,7 @@
     casks = [
       # --- Browsers & Communication ---
       "google-chrome"
-      "arc"
+      # "arc"
       "discord"
 
       # --- Development & Editors ---
@@ -29,11 +29,14 @@
       # "docker"
 
       # --- AI & Productivity ---
+      "claude"
       # "raycast"
+      "swama"
+      "lm-studio"
       "notion"
       "antigravity"
       "sozercan/repo/kaset"
-      "steipete/tap/codexbar"
+      # "steipete/tap/codexbar"
 
       # --- System Utilities ---
       "karabiner-elements"

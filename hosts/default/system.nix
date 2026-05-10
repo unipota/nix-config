@@ -76,7 +76,7 @@
     trackpad = {
       Clicking = true;
       TrackpadRightClick = true; # two-finger tap for right click
-      TrackpadThreeFingerDrag = true; # Enable three finger drag
+      TrackpadThreeFingerDrag = false;
     };
     magicmouse = {
       MouseButtonMode = "TwoButton";
@@ -97,7 +97,7 @@
       KeyRepeat = 1;
       InitialKeyRepeat = 10;
       "com.apple.mouse.tapBehavior" = 1;
-      "com.apple.trackpad.scaling" = 1.5;
+      "com.apple.trackpad.scaling" = 1.0;
 
       # Disable auto-correction/typing substitutions
       NSAutomaticCapitalizationEnabled = false;
@@ -106,7 +106,7 @@
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticSpellingCorrectionEnabled = false;
 
-      _HIHideMenuBar = true;
+      _HIHideMenuBar = false;
     };
     CustomUserPreferences = {
       "com.apple.desktopservices" = {
@@ -137,6 +137,22 @@
 
   # Prevent conflicts with the Determinate installer, which manages Nix separately.
   nix.enable = false;
+
+  # Increase file descriptor limit for Nix daemon (default 256 is too low)
+  launchd.daemons.limit-maxfiles = {
+    serviceConfig = {
+      Label = "limit.maxfiles";
+      ProgramArguments = [
+        "launchctl"
+        "limit"
+        "maxfiles"
+        "65536"
+        "524288"
+      ];
+      RunAtLoad = true;
+      ServiceIPC = false;
+    };
+  };
 
   fonts.packages = with pkgs; [
     maple-mono.NF

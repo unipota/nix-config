@@ -8,8 +8,16 @@
     nh
     nixfmt
     nix-output-monitor
-    kanata-with-cmd
+    ollama
   ];
 
   nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.overlays = [
+    (_: prev: {
+      direnv = prev.direnv.overrideAttrs (_: {
+        doCheck = false;
+      });
+    })
+  ];
 }

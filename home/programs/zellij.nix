@@ -2,8 +2,8 @@
 
 {
   programs.zellij = {
-    enable = true;
-    enableZshIntegration = true;
+    enable = false;
+    enableZshIntegration = false;
   };
 
   xdg.configFile."zellij/config.kdl".source = ../../config/zellij/config.kdl;

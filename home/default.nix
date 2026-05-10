@@ -1,14 +1,16 @@
 # Home-manager configuration for the user
-{ pkgs, ... }:
+{ ... }:
 
 {
   # Automatically back up existing dotfiles managed by home-manager
   home-manager.backupFileExtension = "bak";
+  home-manager.useGlobalPkgs = true;
 
   home-manager.users.unipota =
-    { config, pkgs, ... }:
+    { ... }:
     {
       imports = [
+        ../modules/home/development.nix
         ./packages.nix
         ./shell.nix
         ./programs/git.nix
@@ -18,8 +20,5 @@
       ];
 
       home.stateVersion = "23.11";
-
-      # Enable unfree packages for this user
-      nixpkgs.config.allowUnfree = true;
     };
 }
