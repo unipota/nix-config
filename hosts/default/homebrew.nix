@@ -1,52 +1,15 @@
-# Homebrew package configuration
-{ ... }:
+{ lib, ... }:
 
 {
-  homebrew = {
-    enable = true;
-    onActivation = {
-      autoUpdate = true;
-      cleanup = "uninstall";
-    };
-    taps = [
-    ];
-    brews = [
-      # --- System & Networking ---
-      "mas"
-      "tailscale"
-    ];
-    casks = [
-      # --- Browsers & Communication ---
-      "google-chrome"
-      # "arc"
-      "discord"
+  unipota.homebrew = {
+    enable = lib.mkDefault true;
 
-      # --- Development & Editors ---
-      "visual-studio-code"
-      "zed"
-      "ghostty"
-      "orbstack"
-      # "docker"
-
-      # --- AI & Productivity ---
-      "claude"
-      # "raycast"
-      "swama"
-      "lm-studio"
-      "notion"
-      "antigravity"
-      "sozercan/repo/kaset"
-      # "steipete/tap/codexbar"
-
-      # --- System Utilities ---
-      "karabiner-elements"
-      "cleanshot"
-      "tailscale-app"
-
-      # --- Media & Entertainment ---
-      # "spotify"
-    ];
-    masApps = {
-    };
+    core.enable = lib.mkDefault true;
+    browsers.enable = lib.mkDefault true;
+    communication.enable = lib.mkDefault true;
+    development.enable = lib.mkDefault true;
+    ai.enable = lib.mkDefault true;
+    productivity.enable = lib.mkDefault true;
+    utilities.enable = lib.mkDefault true;
   };
 }

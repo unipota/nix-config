@@ -1,17 +1,16 @@
-# Macbook-specific Homebrew packages
 { ... }:
 
 {
-  homebrew = {
-    taps = [
+  unipota.homebrew = {
+    extraTaps = [
       "theboredteam/boring-notch"
     ];
-    casks = [
-      # --- System Customization ---
+
+    extraCasks = [
       "TheBoredTeam/boring-notch/boring-notch"
     ];
-    masApps = {
-      # --- Productivity & Utilities ---
+
+    extraMasApps = {
       "Klack" = 6446206067;
     };
   };
